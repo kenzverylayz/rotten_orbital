@@ -76,9 +76,7 @@
         width: "100%";
         margin: 1rem;
       }
-
-
-}
+    }
 
   label {
     text-align: left;
@@ -219,8 +217,8 @@
   
 
   .empty h2 {
-    font-size: 10rem;
-    color: white;
+    font-size: 7rem;
+    color: purple;
     font-family: var(--font-raleway);
   }
 

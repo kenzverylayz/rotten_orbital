@@ -41,7 +41,7 @@ export const SearchMovies = () => {
           </div>
         ) : (
           <div className='empty'>
-            <h2>No movies found :(</h2>
+            <h2>Nothing :(</h2>
           </div>
         )}
       </div>
