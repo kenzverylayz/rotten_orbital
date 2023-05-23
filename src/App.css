@@ -12,7 +12,7 @@
   }
 
   body {
-    background-image: url('/pictures/movieposter.jpg');
+    background-image: url('/pictures/purplefilm.jpg');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -33,7 +33,7 @@
   flex-direction: column;
   border: none; /* Add a border around the input */
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity */
+  background-color: rgba(239, 219, 249, 0.8); /* Adjust the background color and opacity */
   padding: 20px; /* Add padding to create space around the content */
   width: 300px; /* Set a specific width for the container */
   margin: 0 auto; /* Center the container horizontally */
@@ -94,7 +94,7 @@
 
   button {
     border: none;
-    background-color: red; /* Set the background color to red */
+    background-color: black; /* Set the background color to red */
     padding: 20px;
     border-radius: 20px;
     cursor: pointer;
