@@ -208,11 +208,11 @@
   }
 
   .empty {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw; /* Set the width to 100% of the viewport width */
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the content horizontally */
+    align-items: flex-start; /* Align the content to the top */
   }
   
 
@@ -220,6 +220,7 @@
     font-size: 7rem;
     color: rgb(161, 63, 152);
     font-family: var(--font-raleway);
+    margin-top: -20 px; 
   }
 
   .container {
