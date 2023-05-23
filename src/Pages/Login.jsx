@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Login = (props) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
+    navigate('/SearchMovies'); // Replace '/new-page' with the desired URL
   };
 
   return (
@@ -35,15 +37,15 @@ export const Login = (props) => {
           />
           <button type="submit">Log In</button>
         </form>
-        </div>
-        <div className="links-container">
+      </div>
+      <div className="links-container">
         <Link to="/register" className="link-btn">
           Don't have an account? Register here.
         </Link>
         <Link to="/forgetPassword" className="link-btn">
           Forgot your password?
         </Link>
-        </div>
       </div>
+    </div>
   );
 };
