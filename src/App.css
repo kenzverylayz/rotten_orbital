@@ -218,7 +218,7 @@
 
   .empty h2 {
     font-size: 7rem;
-    color: purple;
+    color: rgb(161, 63, 152);
     font-family: var(--font-raleway);
   }
 
