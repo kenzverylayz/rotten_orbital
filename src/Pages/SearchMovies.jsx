@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
 import { Link } from 'react-router-dom';
+import logo from './logo.svg';
 
 export const SearchMovies = () => {
   const API_URL = 'https://www.omdbapi.com?apikey=5c0c7bf';
@@ -30,6 +31,7 @@ export const SearchMovies = () => {
 
   return (
     <div className="search-movies-container">
+      <img src={logo} alt="Logo" className="logo" />
       <div className="lol">
         <div className='search'>
           <input
