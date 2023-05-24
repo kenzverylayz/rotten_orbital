@@ -14,6 +14,16 @@ export const SearchMovies = () => {
     setMovies(data.Search);
   };
 
+  const handleSearch = () => {
+    searchMovies(searchTerm);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   useEffect(() => {
     searchMovies('');
   }, []);
@@ -26,11 +36,12 @@ export const SearchMovies = () => {
             placeholder="Search for movies"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleKeyPress} // Added event listener for key press
           />
           <img
             src={SearchIcon}
             alt="search"
-            onClick={() => searchMovies(searchTerm)}
+            onClick={handleSearch} // Changed the click event to call handleSearch function
           />
         </div>
         {movies?.length > 0 ? (
@@ -46,9 +57,8 @@ export const SearchMovies = () => {
         )}
       </div>
       <Link to="/login" className="log-out">
-          Logout
-        </Link>
+        Logout
+      </Link>
     </div>
-    
   );
 };
