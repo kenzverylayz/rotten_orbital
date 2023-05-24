@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 
-
 .App {
   text-align: center;
   display: flex;
@@ -9,23 +8,23 @@
   align-items: center;
   justify-content: center;
   color: black;
-  }
+}
 
-  body {
-    background-image: url('/pictures/purplefilm.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  
+body {
+  background-image: url('/pictures/purplefilm.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-  .auth-form-containter, .login-form, .register-form {
-    display:flex;
-    flex-direction: column;
-    border: none; /* Add a border around the input */
-    border-radius: 10px;
-   }
+.auth-form-containter,
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  border: none; /* Add a border around the input */
+  border-radius: 10px;
+}
 
-  
 .login-page-container,
 .signup-page-container,
 .forget-page-container {
@@ -38,242 +37,257 @@
   width: 300px; /* Set a specific width for the container */
   margin: 0 auto; /* Center the container horizontally */
 }
+
 @media screen and (max-width: 600px) {
-      .auth-form-containter, .search-movies-container {
-      padding: 5rem;
-      border: none;
-      border-radius: 10px;
+  .auth-form-containter {
+    padding: 5rem;
+    border: none;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+
+@media screen and (max-width: 600px) {
+    .search-movies-container {
+      padding: 1rem;
       margin: 0.5rem;
-      }
-
-      .lol {
-        padding: 4rem 2rem;
-      }
-    
-      .search {
-        padding: 1rem 1.75rem;
-        width: 100%;
-      }
-    
-      .search input {
-        font-size: 1rem;
-      }
-    
-      .search img {
-        width: 20px;
-        height: 20px;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-    
-      .container {
-        margin-top: 2rem;
-      }
-    
-      .movie {
-        width: "100%";
-        margin: 1rem;
-      }
     }
-
-  label {
-    text-align: left;
-    padding: 0.25rem 0;
-  }
-
-  input {
-    margin: 1.0rem 0;
-    padding: 1rem;
-    border: none;
-    border-radius: 10px;
-  }
-
-  button {
-    border: none;
-    background-color: black; /* Set the background color to red */
-    padding: 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: #ffffff; /* Set the text color to white */
-  }
   
-
-  .link-btn {
-    margin: 0.5rem 0;
-    background: none;
-    color: black;
-    text-decoration: underline;
-    border-radius: 10px;
-  }
+    .lol {
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   
-
-  .App-logo-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-  }
+    .search {
+      padding: 0.5rem 1rem;
+      width: 100%;
+    }
   
+    .search input {
+      font-size: 0.9rem;
+    }
   
-  .App-logo {
-    width: 200px; /* Adjust the width to your desired size */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  h2 {
-    font-size: 30px; /* Adjust the font size to your desired value */
-    border: none; /* Add a border around the h2 header */
-    padding: 10px; /* Add padding to create space around the h2 header */
-    border-radius: 10px;
-  }
+    .search img {
+      width: 18px;
+      height: 18px;
+    }
   
-  .link-btn {
-    margin-top: 20px;
-    color: black;
-    margin-right: 10px;
-  }
-
-  .links-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .search-movies-container {
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
-    background: #1D2B64;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #F8CDDA, #1D2B64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    h1 {
+      font-size: 1.5rem;
+    }
   
-    /* New code to extend background to whole viewport */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
+    .container {
+      margin-top: 1rem;
+    }
   
+    .movie {
+      width: 100%;
+      margin: 0.5rem;
+    }
   
-  .lol {
-    padding: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #1D2B64;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #F8CDDA, #1D2B64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 80px;
+      height: auto;
+    }
   }
-  
-  :root {
-    --font-roboto: "Roboto Slab", serif;
-    --font-raleway: "Raleway", sans-serif;
-  }
+}
 
-  h1 {
-    font-size: 3rem;
-    letter-spacing: 0.9px;
-    color: white;
-    width: fit-content;
-  }
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
 
-  .search {
-    width: 71%;
-    margin: 4rem 0 2rem;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    padding: 1.5rem 1.75rem;
-    border-radius: 3rem;
-    background: white;
-    -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-    box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-  }
+input {
+  margin: 1.0rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
 
-  .search input {
-    flex: 1;
-    border: none;
-    font-size: 1.5rem;
-    font-family: var(--font-raleway);
-    font-weight: 500;
-    padding-right: 1rem;
-  
-    outline: none;
-    color: black;
-    background: white;
-  }
+button {
+  border: none;
+  background-color: black; /* Set the background color to red */
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #ffffff; /* Set the text color to white */
+}
 
-  .search img {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-  }
+.link-btn {
+  margin: 0.5rem 0;
+  background: none;
+  color: black;
+  text-decoration: underline;
+  border-radius: 10px;
+}
 
-  .empty {
-    width: 100vw; /* Set the width to 100% of the viewport width */
-    height: 100vh; /* Set the height to 100% of the viewport height */
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center the content horizontally */
-    align-items: flex-start; /* Align the content to the top */
-  }
-  
+.App-logo-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
 
-  .empty h2 {
-    font-size: 7rem;
-    color: rgb(161, 63, 152);
-    font-family: var(--font-raleway);
-    margin-top: -20 px; 
-  }
+.App-logo {
+  width: 200px; /* Adjust the width to your desired size */
+  height: auto; /* Maintain aspect ratio */
+}
 
-  .container {
-    width: 100%;
-    margin-top: 3rem;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+h2 {
+  font-size: 30px; /* Adjust the font size to your desired value */
+  border: none; /* Add a border around the h2 header */
+  padding: 10px; /* Add padding to create space around the h2 header */
+  border-radius: 10px;
+}
 
-  .movie {
-    width: 310px;
-    height: 460px;
-    margin: 1.5rem;
-  
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    border: none;
-  
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-  }
+.link-btn {
+  margin-top: 20px;
+  color: black;
+  margin-right: 10px;
+}
 
-  movie div:nth-of-type(1) {
-    position: absolute;
-    padding: 16px;
-    width: 100%;
-    opacity: 0;
-    top: 0;
-    color: #f9d3b4;
-  }
+.links-container {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .movie:hover {
-    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
-    transform: scale(1.05, 1.05);
-  }
+.search-movies-container {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: #1D2B64; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F8CDDA, #1D2B64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  .movie div:nth-of-type(2) {
+  /* New code to extend background to whole viewport */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.lol {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #1D2B64; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F8CDDA, #1D2B64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+:root {
+  --font-roboto: "Roboto Slab", serif;
+  --font-raleway: "Raleway", sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.9px;
+  color: white;
+  width: fit-content;
+}
+
+.search {
+  width: 71%;
+  margin: 4rem 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem 1.75rem;
+  border-radius: 3rem;
+  background: white;
+  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  font-size: 1.5rem;
+  font-family: var(--font-raleway);
+  font-weight: 500;
+  padding-right: 1rem;
+
+  outline: none;
+  color: black;
+  background: white;
+}
+
+.search img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.empty {
+  width: 100vw; /* Set the width to 100% of the viewport width */
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the content horizontally */
+  align-items: flex-start; /* Align the content to the top */
+}
+
+.empty h2 {
+  font-size: 7rem;
+  color: rgb(161, 63, 152);
+  font-family: var(--font-raleway);
+  margin-top: -20 px;
+}
+
+.container {
+  width: 100%;
+  margin-top: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.movie {
+  width: 310px;
+  height: 460px;
+  margin: 1.5rem;
+
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+.movie div:nth-of-type(1) {
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  color: #f9d3b4;
+}
+
+.movie:hover {
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05, 1.05);
+}
+
+.movie div:nth-of-type(2) {
   width: 100%;
   height: 100%;
 }
@@ -339,27 +353,33 @@
   left: 20px; /* Adjust the left value to move it right */
 }
 
+.Success { 
+  font-size: 80px; /* Adjust the font size as needed */ 
+  color: black; 
+} 
+ 
+ 
+.successlogin-btn { 
+  background-color: black; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+} 
+ 
+.SuccessPackage { 
+  width: 400px; 
+  height: 200px; 
+  background-color: rgba(239, 219, 249, 0.8); 
+  border-radius: 10px; /* Adjust the value as needed */ 
+  /* Other styles for the SuccessPackage class */ 
+} 
+ 
+.valid { 
+  color: limegreen; 
+  margin-left: 0.25rem; 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  
-
-  
