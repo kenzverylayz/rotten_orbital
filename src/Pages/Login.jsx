@@ -9,6 +9,7 @@ export const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
+    //logic for login goes here
     navigate('/SearchMovies'); // Replace '/new-page' with the desired URL
   };
 
