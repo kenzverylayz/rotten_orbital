@@ -38,64 +38,7 @@ body {
   margin: 0 auto; /* Center the container horizontally */
 }
 
-@media screen and (max-width: 600px) {
-  .auth-form-containter {
-    padding: 5rem;
-    border: none;
-    border-radius: 10px;
-    margin: 0.5rem;
-  }
 
-@media screen and (max-width: 600px) {
-    .search-movies-container {
-      padding: 1rem;
-      margin: 0.5rem;
-    }
-  
-    .lol {
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .search {
-      padding: 0.5rem 1rem;
-      width: 100%;
-    }
-  
-    .search input {
-      font-size: 0.9rem;
-    }
-  
-    .search img {
-      width: 18px;
-      height: 18px;
-    }
-  
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    .container {
-      margin-top: 1rem;
-    }
-  
-    .movie {
-      width: 100%;
-      margin: 0.5rem;
-    }
-  
-    .logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 80px;
-      height: auto;
-    }
-  }
-}
 
 label {
   text-align: left;
@@ -273,31 +216,22 @@ h1 {
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 
-.movie div:nth-of-type(1) {
-  position: absolute;
-  padding: 16px;
-  width: 100%;
-  opacity: 0;
-  top: 0;
-  color: #f9d3b4;
-}
-
 .movie:hover {
   box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
   transform: scale(1.05, 1.05);
 }
 
+.movie div:nth-of-type(1) {
+  width: 100%;
+  height: 100%;
+}
+
+.movie div:nth-of-type(1) img {
+  height: 100%;
+  width: 100%;
+}
+
 .movie div:nth-of-type(2) {
-  width: 100%;
-  height: 100%;
-}
-
-.movie div:nth-of-type(2) img {
-  height: 100%;
-  width: 100%;
-}
-
-.movie div:nth-of-type(3) {
   z-index: 2;
   background-color: white;
   padding: 16px 24px 24px 24px;
@@ -308,7 +242,7 @@ h1 {
   left: 0;
 }
 
-.movie div:nth-of-type(3) span {
+.movie div:nth-of-type(2) span {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   font-size: 13px;
@@ -317,24 +251,29 @@ h1 {
   color: black;
 }
 
-.movie div:nth-of-type(3) h3 {
+.movie div:nth-of-type(2) h3 {
   margin-top: 5px;
   font-family: "Roboto Slab", serif;
   color: black;
 }
 
-.movie:hover div:nth-of-type(2) {
+.movie:hover div:nth-of-type(1) {
   height: 100%;
   opacity: 0.3;
 }
 
-.movie:hover div:nth-of-type(3) {
+.movie:hover div:nth-of-type(2) {
   background-color: transparent;
 }
 
 .movie:hover div:nth-of-type(1) {
   opacity: 1;
 }
+
+.movie:hover > div:nth-of-type(2) {
+  display: none;
+}
+
 
 .log-out {
   position: absolute;
@@ -382,4 +321,59 @@ h1 {
   color: limegreen; 
   margin-left: 0.25rem; 
 }
+
+@media only screen and (max-width: 768px) {
+  /* Modify styles for small devices here */
+  .container {
+    margin-top: 1rem; /* Adjust the margin-top value as needed */
+  }
+  
+  .movie {
+    width: 100%; /* Adjust the width to fit the smaller screen */
+    height: auto; /* Allow the height to adjust according to the content */
+    margin: 1rem 0; /* Adjust the margin as needed */
+  }
+  
+  .movie div:nth-of-type(2) {
+    padding: 16px; /* Adjust the padding as needed for smaller devices */
+  }
+  
+  .empty h2 {
+    font-size: 4rem; /* Adjust the font size as needed for smaller devices */
+    margin-top: -10px; /* Adjust the margin-top value as needed */
+  }
+  
+  .search {
+    width: 100%; /* Adjust the width to fit the smaller screen */
+  }
+  
+  .search input {
+    font-size: 1.2rem; /* Adjust the font size as needed for smaller devices */
+  }
+
+  .logo {
+    width: 150px; /* Adjust the width for smaller screens */
+    /* Add any additional styles for smaller screens */
+  }
+
+  .auth-form-containter {
+    padding: 5rem;
+    border: none;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+
+  .App-logo {
+    width: 150px; /* Adjust the width for smaller screens */
+    /* Add any additional styles for smaller screens */
+  }
+
+  .login-page-container,
+  .signup-page-container,
+  .forget-page-container {
+    width: 250px; /* Adjust the width for smaller screens */
+    /* Add any additional styles for smaller screens */
+  }
+}
+
 
