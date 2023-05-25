@@ -70,7 +70,7 @@ export const Register = (props) => {
         <>
         {success ? (<section>
             <div className = "SuccessPackage">
-            <div className = "Success">Success!</div>
+            <div className = "Success">Sign up successful!</div>
             <p>
                 <Link to="/login" className="successlogin-btn">Log In</Link>
             </p>
