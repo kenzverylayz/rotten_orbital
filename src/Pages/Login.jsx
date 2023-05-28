@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {useRef, useEffect} from "react";
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const Login = (props) => {
+
+  const userRef = useRef();
+
   const [email, setEmail] = useState('');
+  const [validEmail, setValidEmail] = useState('');
+
   const [pass, setPass] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const result = emailRegex.test(email);
+    console.log(email);
+    console.log(result);
+    setValidEmail(result)
+  },[email])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +51,7 @@ export const Login = (props) => {
             id="password"
             name="password"
           />
-          <button type="submit">Log In</button>
+          <button disabled={!validEmail? true:false}>Log In</button>
         </form>
       </div>
       <div className="links-container">
