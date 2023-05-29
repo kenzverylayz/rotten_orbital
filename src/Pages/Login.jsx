@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {useRef, useEffect} from "react";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -11,7 +13,9 @@ export const Login = (props) => {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState('');
 
-  const [pass, setPass] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,9 +27,18 @@ export const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
-    //logic for login goes here
-    navigate('/SearchMovies'); // Replace '/new-page' with the desired URL
+   
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Handle successful login
+        console.log(userCredential);
+        navigate('/SearchMovies'); // Redirect to desired URL after successful login
+      })
+      .catch((error) => {
+        // Handle login error
+        console.log(error);
+        setError(error.message); // Set the error message in the state
+      });
   };
 
   return (
@@ -44,14 +57,15 @@ export const Login = (props) => {
           />
           <label htmlFor="password">Password</label>
           <input
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="password"
             id="password"
             name="password"
           />
           <button disabled={!validEmail? true:false}>Log In</button>
+          {error && <p className="error-message">{"Invalid Username or Password"}</p>}
         </form>
       </div>
       <div className="links-container">

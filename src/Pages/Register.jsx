@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import {useRef, useEffect} from "react";
-import {faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import{ FontAwesomeIcon }from "@fortawesome/react-fontawesome";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../firebase";
+
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -55,13 +58,13 @@ export const Register = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
-        const v1 = emailRegex.test(email);
-        const v2 = passwordRegex.test(password);
-        if (!v1 || !v2) {
-            setErrMsg("Invalid Entry");
-            return;
-        }
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log(userCredential);
+        })
+            .catch((error) => {
+            console.log(error);
+        });
         console.log(email,password);
         setSuccess(true);
     }
