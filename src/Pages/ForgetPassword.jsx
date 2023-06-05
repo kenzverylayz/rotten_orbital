@@ -72,8 +72,8 @@ export const ForgetPassword = (props) => {
               </>
               )}
           </p>
-          <button disabled={!validEmail? true:false} onClick={() => alert('Email sent! Check your email')}>Send reset email</button>
-        </form>
+          <button className="reset-email-button" disabled={!validEmail ? true : false} onClick={() => alert('Email sent! Check your email')}>Send reset email</button>
+          </form>
         </div>
         <Link to="/login" className="link-btn">
             Back to Login

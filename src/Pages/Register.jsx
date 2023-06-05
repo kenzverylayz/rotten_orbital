@@ -196,7 +196,7 @@ export const Register = (props) => {
                     </>
                     )}
                 </p>
-                <button disabled={!validEmail || !validPassword ||!validConfirmPassword ? true : false}>Sign Up</button>
+                <button className="signup-button" disabled={!validEmail || !validPassword || !validConfirmPassword ? true : false}>Sign Up</button>  
             </form>
             </div>
             <Link to="/login" className="link-btn">Already have an account? Login here.</Link>

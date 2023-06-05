@@ -64,7 +64,7 @@ export const Login = (props) => {
             id="password"
             name="password"
           />
-          <button disabled={!validEmail? true:false}>Log In</button>
+          <button className="login-button" disabled={!validEmail ? true : false}>Log In</button>
           {error && <p className="error-message">{"Invalid Username or Password"}</p>}
         </form>
       </div>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700&display=swap");
 
 .App {
   text-align: center;
@@ -61,10 +62,30 @@ button {
   color: #ffffff; /* Set the text color to white */
 }
 
+.login-button {
+  display: block;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.reset-email-button {
+  display: block;
+  margin-top: 1px;
+  border-radius: 20px;
+}
+
+.signup-button {
+  display: block;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+
+
 .link-btn {
   margin: 0.5rem 0;
   background: none;
-  color: black;
+  color: white;
   text-decoration: underline;
   border-radius: 10px;
 }
@@ -102,178 +123,6 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
-
-.search-movies-container {
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
-  background: #1D2B64; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #F8CDDA, #1D2B64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  /* New code to extend background to whole viewport */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-.lol {
-  padding: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #1D2B64; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #F8CDDA, #1D2B64); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #F8CDDA, #1D2B64); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-:root {
-  --font-roboto: "Roboto Slab", serif;
-  --font-raleway: "Raleway", sans-serif;
-}
-
-h1 {
-  font-size: 3rem;
-  letter-spacing: 0.9px;
-  color: white;
-  width: fit-content;
-}
-
-.search {
-  width: 71%;
-  margin: 4rem 0 2rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 1.5rem 1.75rem;
-  border-radius: 3rem;
-  background: white;
-  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-}
-
-.search input {
-  flex: 1;
-  border: none;
-  font-size: 1.5rem;
-  font-family: var(--font-raleway);
-  font-weight: 500;
-  padding-right: 1rem;
-
-  outline: none;
-  color: black;
-  background: white;
-}
-
-.search img {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
-
-.empty {
-  width: 100vw; /* Set the width to 100% of the viewport width */
-  height: 100vh; /* Set the height to 100% of the viewport height */
-  display: flex; /* Use flexbox for layout */
-  justify-content: center; /* Center the content horizontally */
-  align-items: flex-start; /* Align the content to the top */
-}
-
-.empty h2 {
-  font-size: 7rem;
-  color: rgb(161, 63, 152);
-  font-family: var(--font-raleway);
-  margin-top: -20 px;
-}
-
-.container {
-  width: 100%;
-  margin-top: 3rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.movie {
-  width: 310px;
-  height: 460px;
-  margin: 1.5rem;
-
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: none;
-
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-}
-
-.movie:hover {
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
-  transform: scale(1.05, 1.05);
-}
-
-.movie div:nth-of-type(1) {
-  width: 100%;
-  height: 100%;
-}
-
-.movie div:nth-of-type(1) img {
-  height: 100%;
-  width: 100%;
-}
-
-.movie div:nth-of-type(2) {
-  z-index: 2;
-  background-color: white;
-  padding: 16px 24px 24px 24px;
-
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-.movie div:nth-of-type(2) span {
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 2px;
-  font-weight: 500;
-  color: black;
-}
-
-.movie div:nth-of-type(2) h3 {
-  margin-top: 5px;
-  font-family: "Roboto Slab", serif;
-  color: black;
-}
-
-.movie:hover div:nth-of-type(1) {
-  height: 100%;
-  opacity: 0.3;
-}
-
-.movie:hover div:nth-of-type(2) {
-  background-color: transparent;
-}
-
-.movie:hover div:nth-of-type(1) {
-  opacity: 1;
-}
-
-.movie:hover > div:nth-of-type(2) {
-  display: none;
-}
-
 
 .log-out {
   position: absolute;
@@ -315,40 +164,35 @@ h1 {
   margin-left: 0.25rem; 
 }
 
+.container{
+  width: 100%;
+  margin: 1em auto;
+  background-color: black;
+  position: relative;
+  top: -20px; /* Adjust the value as per your requirements */
+}
+
+.grid {
+  display: grid;
+  margin-left: .5px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.2em;
+}
+
+.movies{
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+
+}
+
+
+
+
 @media only screen and (max-width: 768px) {
-  /* Modify styles for small devices here */
-  .container {
-    margin-top: 1rem; /* Adjust the margin-top value as needed */
-  }
-  
-  .movie {
-    width: 100%; /* Adjust the width to fit the smaller screen */
-    height: auto; /* Allow the height to adjust according to the content */
-    margin: 1rem 0; /* Adjust the margin as needed */
-  }
-  
-  .movie div:nth-of-type(2) {
-    padding: 16px; /* Adjust the padding as needed for smaller devices */
-  }
-  
-  .empty h2 {
-    font-size: 4rem; /* Adjust the font size as needed for smaller devices */
-    margin-top: -10px; /* Adjust the margin-top value as needed */
-  }
-  
-  .search {
-    width: 100%; /* Adjust the width to fit the smaller screen */
-  }
-  
-  .search input {
-    font-size: 1.2rem; /* Adjust the font size as needed for smaller devices */
-  }
-
-  .logo {
-    width: 150px; /* Adjust the width for smaller screens */
-    /* Add any additional styles for smaller screens */
-  }
-
   .auth-form-containter {
     padding: 5rem;
     border: none;
