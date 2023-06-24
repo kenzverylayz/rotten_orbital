@@ -6,6 +6,7 @@ import { Timestamp } from 'firebase/firestore';
 import CommentCard from './CommentCard';
 
 const API_IMG = "https://image.tmdb.org/t/p/w500/";
+const MAX_WORDS = 500; // Maximum Number of Words Allowed
 
 export const CommentSection = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ export const CommentSection = () => {
   const movieid = searchParams.get('id');
   const [commentList, setCommentList] = useState([]);
   const [newComment, setNewComment] = useState('');
-  const [updatedComment, setUpdatedComment] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   function saveTimestampToFirestore() {
     const timestampInMillis = Date.now();
@@ -48,31 +49,36 @@ export const CommentSection = () => {
 
   const deleteComment = async (id) => {
     const commentDoc = doc(db, "Comments", id);
-    await deleteDoc(commentDoc)
-  }
+    await deleteDoc(commentDoc);
+ 
+    // Fetch the updated comment list from the database
+    const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
+    const querySnapshot = await getDocs(q);
+    const comments = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+ 
+    setCommentList(comments);
+  };
+ 
 
   const updateComment = async (id, updatedComment) => {
     const commentDoc = doc(db, "Comments", id);
-    await updateDoc(commentDoc, updatedComment)
-  }
+    await updateDoc(commentDoc, { Comment: updatedComment })
 
+    const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
+    const querySnapshot = await getDocs(q);
+    const comments = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
+    setCommentList(comments);
+  }
  
   useEffect(() => {
     const getCommentList = async () => {
-      try {
-        if (movieid) {
-          const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
-          const querySnapshot = await getDocs(q);
-          const comments = querySnapshot.docs.map((doc) => doc.data());
+        const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
+        const querySnapshot = await getDocs(q);
+        const comments = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
           setCommentList(comments);
-        }
-      } catch (err) {
-        console.error('Error retrieving comments:', err);
-      }
-    };
- 
+        };
     getCommentList();
-  }, [movieid]);
+  }, []);
 
   // Calculate the number of filled stars based on the vote
   const filledStars = Math.round(vote / 2);
@@ -85,17 +91,37 @@ export const CommentSection = () => {
     />
   ));
 
-  const handleCommentSubmit = (e) => {
+  const handleCommentSubmit = async (e) => {
     e.preventDefault();
-
+ 
+    // Trim the new comment to remove leading and trailing spaces
+    const trimmedComment = newComment.trim();
+ 
+    // Split into words using spaces and do word count
+    const words = trimmedComment.split(' ');
+    const wordCount = words.length;
+ 
+    // Check if the comment is empty or exceeds the word limit
+    if (trimmedComment === '') {
+      // Display an error message
+      setErrorMessage('Unable to create empty comment');
+      return;
+    }
+    if (wordCount > MAX_WORDS) {
+      setErrorMessage('Exceeded Word Limit: 500');
+      return;
+    }
     // Add the new comment to the comments array
-    const updatedComments = [...commentList, newComment];
+    const updatedComments = [...commentList, trimmedComment];
     setCommentList(updatedComments);
-
+    // Create the comment in the database
+    await createComment();
     // Clear the comment input
     setNewComment('');
+    setErrorMessage('');
+    window.location.reload();
   };
-
+ 
 
   return (
     <div className="comment-section-container">
@@ -123,18 +149,19 @@ export const CommentSection = () => {
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Enter your comment"
         />
-        <button className="submit-button" onClick={createComment}>Submit</button>
+        <button className="submit-button">Submit</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
       <div className="comment-list">
         {commentList.map((comment, index) => (
-          <CommentCard
-          key={index}
-          comment={comment}
-          deleteComment={() => deleteComment(comment.id)}
-          updateComment={(updatedComment) => updateComment(comment.id, updatedComment)}
-        />
-        ))}
-      </div>
-    </div>
-  );
-}
+              <CommentCard
+              key={index}
+              comment={comment}
+              handleDelete={() => deleteComment(comment.id)}
+              handleUpdate={(updatedComment) => updateComment(comment.id, updatedComment)}
+            />
+            ))}
+          </div>
+        </div>
+      );
+    }
