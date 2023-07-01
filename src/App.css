@@ -294,6 +294,10 @@ h2 {
   text-align: left;
 }
 
+.comment-input {
+  margin-left: 0;
+}
+
 .comment-card {
   display: flex;
   flex-direction: column;
@@ -314,6 +318,24 @@ h2 {
   background-color: white;
   border: none;
   color: black;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.star-rating-inline {
+  margin-left: 0;
+  margin-bottom: 1rem;
+}
+
+.rating-stars {
+  margin-left: 1.0rem;
 }
 
 

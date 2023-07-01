@@ -4,6 +4,7 @@ import { db } from "../firebase.js";
 import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 import { Timestamp } from 'firebase/firestore';
 import CommentCard from './CommentCard';
+import StarRating from './StarRating';
 
 const API_IMG = "https://image.tmdb.org/t/p/w500/";
 const MAX_WORDS = 500; // Maximum Number of Words Allowed
@@ -21,6 +22,7 @@ export const CommentSection = () => {
   const [commentList, setCommentList] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [selectedRating, setSelectedRating] = useState(null);
 
   function saveTimestampToFirestore() {
     const timestampInMillis = Date.now();
@@ -33,7 +35,8 @@ export const CommentSection = () => {
       Comment: newComment,
       movieid: movieid,
       time: saveTimestampToFirestore(),
-      username: "testing"
+      username: "testing",
+      rating: selectedRating
     });
  
     // Fetch the updated comment list from the database
@@ -45,7 +48,6 @@ export const CommentSection = () => {
     // Clear the comment input
     setNewComment('');
   };
- 
 
   const deleteComment = async (id) => {
     const commentDoc = doc(db, "Comments", id);
@@ -142,6 +144,7 @@ export const CommentSection = () => {
       <h2 className="comment-title">Summary</h2>
       <p className="overview">{overview}</p>
       <h2 className="comment-title">Comments</h2>
+      <p className="star-rating-inline"> <StarRating onSelectRating={setSelectedRating}/> </p>
       <form onSubmit={handleCommentSubmit}>
         <textarea
           className="comment-input"
