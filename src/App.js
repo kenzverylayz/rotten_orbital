@@ -7,6 +7,7 @@ import { ForgetPassword } from './Pages/ForgetPassword';
 import { Route, Routes } from "react-router-dom";
 import { SearchMovies } from './Pages/SearchMovies';
 import { CommentSection } from "./Pages/CommentSection";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -20,15 +21,15 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/ForgetPassword" element={<ForgetPassword />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/SearchMovies" element={<SearchMovies />} />
-        <Route path="/CommentSection" element={<CommentSection/>} />
+        <Route exact path='/' element={<PrivateRoute/>}>
+          <Route exact path='/CommentSection' element={<CommentSection/>}/>
+        </Route>
+        <Route exact path='/' element={<PrivateRoute/>}>
+          <Route exact path='/SearchMovies' element={<SearchMovies/>}/>
+        </Route>
       </Routes>
-     
     </div>
   );
 }
 
 export default App;
-
-
-
