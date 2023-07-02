@@ -21,12 +21,8 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/ForgetPassword" element={<ForgetPassword />} />
         <Route path="/Login" element={<Login />} />
-        <Route exact path='/' element={<PrivateRoute/>}>
-          <Route exact path='/CommentSection' element={<CommentSection/>}/>
-        </Route>
-        <Route exact path='/' element={<PrivateRoute/>}>
-          <Route exact path='/SearchMovies' element={<SearchMovies/>}/>
-        </Route>
+        <Route exact path='/CommentSection' element={<CommentSection/>}/>
+        <Route exact path='/SearchMovies' element={<SearchMovies/>}/>
       </Routes>
     </div>
   );
