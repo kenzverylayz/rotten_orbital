@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 import { db } from "../firebase.js";
 import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 import { Timestamp } from 'firebase/firestore';
 import CommentCard from './CommentCard';
 import StarRating from './StarRating';
@@ -23,6 +24,10 @@ export const CommentSection = () => {
   const [newComment, setNewComment] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedRating, setSelectedRating] = useState(null);
+  const auth = getAuth();
+  const currentUser = auth.currentUser;
+  const currentUserId = currentUser ? currentUser.uid : null;
+  const userEmail = currentUser ? currentUser.email : null;
 
   function saveTimestampToFirestore() {
     const timestampInMillis = Date.now();
@@ -35,7 +40,8 @@ export const CommentSection = () => {
       Comment: newComment,
       movieid: movieid,
       time: saveTimestampToFirestore(),
-      username: "testing",
+      Email: userEmail,
+      userID: currentUserId,
       rating: selectedRating
     });
  
@@ -62,9 +68,9 @@ export const CommentSection = () => {
   };
  
 
-  const updateComment = async (id, updatedComment) => {
+  const updateComment = async (id, updatedComment, rating) => {
     const commentDoc = doc(db, "Comments", id);
-    await updateDoc(commentDoc, { Comment: updatedComment })
+    await updateDoc(commentDoc, { Comment: updatedComment, rating })
 
     const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
     const querySnapshot = await getDocs(q);
@@ -161,7 +167,7 @@ export const CommentSection = () => {
               key={index}
               comment={comment}
               handleDelete={() => deleteComment(comment.id)}
-              handleUpdate={(updatedComment) => updateComment(comment.id, updatedComment)}
+              handleUpdate={(updatedComment, rating) => updateComment(comment.id, updatedComment, rating)}
             />
             ))}
           </div>
