@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from 'react-icons/fa';
-import deleteIcon from './delete.icon.svg';
-import editIcon from './edit.icon.svg';
+import { getAuth } from "firebase/auth";
+import StarRating from './StarRating';
 
 const MAX_WORDS = 500; // Maximum Number of Words Allowed
 
 const CommentCard = ({ comment, handleDelete, handleUpdate }) => {
-  const { Comment, movieid, time, username, rating } = comment;
+  const { Comment, movieid, time, username, rating, userID, Email } = comment;
   const [isEditing, setIsEditing] = useState(false);
   const [updatedComment, setUpdatedComment] = useState(Comment);
   const [errorMessage, setErrorMessage] = useState('');
+  const [selectedRating, setSelectedRating] = useState(null);
+  const currentUser = getAuth().currentUser;
+  const currentUserId = currentUser ? currentUser.uid : null;
+  const userEmail = currentUser ? currentUser.email : null;
 
   const publishDate = time ? new Date(time.toMillis()).toLocaleString() : '';
 
@@ -18,6 +22,10 @@ const CommentCard = ({ comment, handleDelete, handleUpdate }) => {
   };
 
   const handleEditClick = () => {
+    if (userID !== currentUserId) {
+      setErrorMessage("Cannot Edit a Comment not made by you");
+      return;
+    }
     setIsEditing(!isEditing);
     setErrorMessage('');
   };
@@ -33,10 +41,21 @@ const CommentCard = ({ comment, handleDelete, handleUpdate }) => {
       return;
     }
  
-    handleUpdate(updatedComment);
+    handleUpdate(updatedComment, selectedRating);
     setErrorMessage('');
     setIsEditing(false);
+    setSelectedRating(null);
   };
+
+  const handleDeleteClick = () => {
+    if (userID !== currentUserId) {
+      setErrorMessage("Cannot delete a comment not made by you");
+      return;
+    }
+
+    handleDelete();
+  };
+
 
   const starElements = Array.from({ length: 5 }, (_, index) => (
     <FaStar
@@ -47,28 +66,32 @@ const CommentCard = ({ comment, handleDelete, handleUpdate }) => {
     />
   ));
 
-    return (
+    
+  return (
     <div className="comment-card">
       <div className="comment-card-header">
-        <span className="username">{username}
+        <span className="username">{Email}
           <span className="rating-stars">{starElements}</span>
         </span>
         <span className="publish-date">posted on {publishDate}</span>
       </div>
       <div className="comment-card-content">
         {isEditing ? (
-          <textarea
-            className="comment-textarea"
-            value={updatedComment}
-            onChange={handleInputChange}
-            style={{ width: '80%', height: '100px' }} // Adjust the width and height values as needed
-          />
+          <div>
+            <p className="star-rating-inline"> <StarRating onSelectRating={setSelectedRating}/> </p>
+            <textarea
+              className="comment-textarea"
+              value={updatedComment}
+              onChange={handleInputChange}
+              style={{ width: '80%', height: '100px' }} // Adjust the width and height values as needed
+            />
+          </div>
         ) : (
           <div>{Comment}</div>
         )}
       </div>
       <div className="comment-card-buttons">
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={handleDeleteClick}>Delete</button>
         <button onClick={handleEditClick}>
           {isEditing ? 'Cancel' : 'Edit'}
         </button>
