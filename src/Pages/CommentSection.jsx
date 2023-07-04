@@ -45,11 +45,7 @@ export const CommentSection = () => {
       rating: selectedRating
     });
  
-    // Fetch the updated comment list from the database
-    const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
-    const querySnapshot = await getDocs(q);
-    const comments = querySnapshot.docs.map((doc) => doc.data());
-    setCommentList(comments);
+    await getCommentList();
  
     // Clear the comment input
     setNewComment('');
@@ -59,12 +55,7 @@ export const CommentSection = () => {
     const commentDoc = doc(db, "Comments", id);
     await deleteDoc(commentDoc);
  
-    // Fetch the updated comment list from the database
-    const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
-    const querySnapshot = await getDocs(q);
-    const comments = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
- 
-    setCommentList(comments);
+    await getCommentList();
   };
  
 
@@ -72,21 +63,19 @@ export const CommentSection = () => {
     const commentDoc = doc(db, "Comments", id);
     await updateDoc(commentDoc, { Comment: updatedComment, rating })
 
-    const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
-    const querySnapshot = await getDocs(q);
-    const comments = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-    setCommentList(comments);
+    await getCommentList();
   }
  
   useEffect(() => {
-    const getCommentList = async () => {
-        const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
-        const querySnapshot = await getDocs(q);
-        const comments = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-          setCommentList(comments);
-        };
-    getCommentList();
-  }, []);
+    getCommentList()
+        }, []);
+
+  const getCommentList = async () => {
+    const q = query(collection(db, 'Comments'), where('movieid', '==', movieid));
+    const querySnapshot = await getDocs(q);
+    const comments = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id}));
+    setCommentList(comments);
+  }
 
   // Calculate the number of filled stars based on the vote
   const filledStars = Math.round(vote / 2);
