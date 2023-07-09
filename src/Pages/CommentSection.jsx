@@ -122,6 +122,9 @@ export const CommentSection = () => {
 
   return (
     <div className="comment-section-container">
+      <Link to="/SearchMovies" className="link-btn top-right">
+        Back to Main Page
+      </Link>
       <div className="image-container">
         <img src={API_IMG + poster} alt="Movie Poster" />
       </div>
