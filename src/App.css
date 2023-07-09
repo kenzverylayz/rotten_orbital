@@ -338,6 +338,11 @@ input[type="radio"] {
   margin-left: 1.0rem;
 }
 
+.top-right {
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+}
 
 @media only screen and (max-width: 768px) {
   .auth-form-containter {
