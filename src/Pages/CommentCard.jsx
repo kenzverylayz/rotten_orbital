@@ -23,7 +23,7 @@ const CommentCard = ({ comment, handleDelete, handleUpdate }) => {
 
   const handleEditClick = () => {
     if (userID !== currentUserId) {
-      setErrorMessage("Cannot Edit a Comment not made by you");
+      setErrorMessage("Cannot edit a comment made by others");
       return;
     }
     setIsEditing(!isEditing);
@@ -49,7 +49,7 @@ const CommentCard = ({ comment, handleDelete, handleUpdate }) => {
 
   const handleDeleteClick = () => {
     if (userID !== currentUserId) {
-      setErrorMessage("Cannot delete a comment not made by you");
+      setErrorMessage("Cannot delete a comment made by others");
       return;
     }
 

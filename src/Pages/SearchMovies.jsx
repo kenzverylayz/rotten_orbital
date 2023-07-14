@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
-import { Link } from 'react-router-dom';
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar,Container,Nav,Form, FormControl,Button } from 'react-bootstrap';
 
@@ -96,7 +94,7 @@ export const SearchMovies = () => {
             </div>
           </div>
         ) : (
-          <h2>Sorry !! No Movies Found</h2>
+          <h2> No Movies Found</h2>
         )}
       </div>
     </div>
