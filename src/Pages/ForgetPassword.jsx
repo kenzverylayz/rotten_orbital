@@ -4,7 +4,7 @@ import {useRef, useEffect} from "react";
 import {faCheck, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import{ FontAwesomeIcon }from "@fortawesome/react-fontawesome";
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 export const ForgetPassword = (props) => {
 
