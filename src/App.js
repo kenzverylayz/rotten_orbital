@@ -7,7 +7,6 @@ import { ForgetPassword } from './Pages/ForgetPassword';
 import { Route, Routes } from "react-router-dom";
 import { SearchMovies } from './Pages/SearchMovies';
 import { CommentSection } from "./Pages/CommentSection";
-import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
